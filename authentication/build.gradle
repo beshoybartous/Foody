@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+
+android {
+    namespace 'com.besho.authentication'
+    compileSdk 33
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.6'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+//core
+    implementation libs.bundles.core
+
+    //compose
+    implementation libs.bundles.compose
+
+    //hilt
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+
+    //network
+    implementation libs.bundles.network
+
+    implementation project(":network")
+}

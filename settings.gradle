@@ -14,5 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Foody"
 include ':app'
-include ':libs'
-include ':libs:hilt'
+include ':authentication'
+include ':home'
+include ':network'
