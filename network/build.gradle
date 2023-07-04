@@ -1,0 +1,33 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.besho.network'
+    compileSdk 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+}
+
+dependencies {
+    //hilt
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
+
+    implementation libs.androidx.core.ktx
+    debugImplementation libs.chucker
+    implementation libs.org.jetbrains.kotlin.stdlib
+
+    implementation libs.bundles.network
+
+
+}
