@@ -7,6 +7,9 @@ import com.besho.authentication.login.data.source.remote.AuthenticationRemoteDat
 import com.besho.authentication.login.data.source.remote.api.AuthenticationApi
 import com.besho.authentication.login.domain.repo.AuthenticationRepo
 import com.besho.authentication.login.domain.usecase.LoginUseCase
+import com.besho.authentication.login.domain.usecase.LoginValidationsUseCase
+import com.besho.authentication.login.domain.usecase.PasswordValidationUseCase
+import com.besho.authentication.login.domain.usecase.UserNameValidationUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,4 +47,25 @@ object AuthenticationModule {
     @Singleton
     fun provideLoginUseCase(authenticationRepo: AuthenticationRepo) =
         LoginUseCase(authenticationRepo)
+
+    @Provides
+    @Singleton
+    fun provideLoginValidationUseCase(
+        userNameValidationUseCase: UserNameValidationUseCase,
+        passwordValidationUseCase: PasswordValidationUseCase,
+    ) =
+        LoginValidationsUseCase(
+            userNameValidationUseCase,
+            passwordValidationUseCase
+        )
+
+    @Provides
+    @Singleton
+    fun provideUserNameValidationUseCase(
+    ) = UserNameValidationUseCase()
+
+    @Provides
+    @Singleton
+    fun provideUserPasswordValidationUseCase(
+    ) = PasswordValidationUseCase()
 }

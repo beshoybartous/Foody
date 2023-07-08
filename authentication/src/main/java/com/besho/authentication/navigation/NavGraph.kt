@@ -8,10 +8,6 @@ import androidx.navigation.navigation
 import com.besho.authentication.login.presentation.screen.login.LoginScreen
 import com.besho.authentication.login.presentation.screen.login.navigation.LoginInternalNavigation
 import com.besho.authentication.login.presentation.screen.login.viewmodel.LoginViewModel
-import com.besho.authentication.login.presentation.screen.register.RegisterScreen
-import com.besho.authentication.login.presentation.screen.register.viewmodel.RegisterViewModel
-
-
 
 fun NavGraphBuilder.authenticationGraph(
     navController: NavController,
@@ -27,7 +23,11 @@ fun NavGraphBuilder.authenticationGraph(
                 externalNavigation = {
                     when (it) {
                         is AuthenticationExternalNavigation.HomeNavigation -> {
-                            event.invoke(AuthenticationExternalNavigation.HomeNavigation("beshoy"))
+                            event.invoke(
+                                AuthenticationExternalNavigation.HomeNavigation(
+                                    "beshoy"
+                                )
+                            )
                         }
                     }
                 },
@@ -47,9 +47,7 @@ fun NavGraphBuilder.authenticationGraph(
             )
         }
         composable(route = AuthenticationScreen.Register.route) {
-            val registerViewModel = hiltViewModel<RegisterViewModel>()
 
-            RegisterScreen(registerViewModel)
         }
         composable(route = AuthenticationScreen.ForgetPassword.route) {}
     }

@@ -10,9 +10,6 @@ import androidx.navigation.compose.rememberNavController
 import com.besho.authentication.navigation.AuthenticationExternalNavigation
 import com.besho.authentication.navigation.authenticationGraph
 import com.besho.foody.ui.theme.FoodyTheme
-import com.besho.home.navigation.HomeExternalNavigation
-import com.besho.home.navigation.homeGraph
-import com.besho.home.navigation.navigateToHomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,16 +34,16 @@ fun SetupNavGraph(navController: NavHostController) {
             authenticationGraph(navController) {
                 when (it) {
                     is AuthenticationExternalNavigation.HomeNavigation -> {
-                        navController.navigateToHomeScreen()
+//                        navController.navigateToHomeScreen()
                     }
                 }
             }
-            homeGraph(navController){
-                when(it){
-                    is HomeExternalNavigation.MINavigation->{
-
-                    }
-                }
-            }
+//            homeGraph(navController){
+//                when(it){
+//                    is HomeExternalNavigation.MINavigation->{
+//
+//                    }
+//                }
+//            }
         })
 }
